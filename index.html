@@ -10,6 +10,8 @@
     const choices = ["ROCK", "PAPER", "SCISSORS"];
     let computerSelection = getComputerChoice();
     let playerSelection = prompt("What do you choose?").toUpperCase();
+    let playerScore = 0;
+    let computerScore = 0;
 
     function getComputerChoice() {
       let randomChoice = choices[Math.floor(Math.random() * choices.length)];
@@ -17,21 +19,42 @@
     }
 
     function playRound(playerSelection, computerSelection) {
+      playerSelection = prompt("What do you choose?").toUpperCase();
+      computerSelection = getComputerChoice();
       if (playerSelection == "ROCK" && computerSelection == "PAPER") {
-       	return "You lose! PAPER beats ROCK."
+       	return "You lose! PAPER beats ROCK.";
+       	computerScore++
       } else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
-       	return "You lose! SCISSORS beats PAPER."
+       	return "You lose! SCISSORS beats PAPER.";
+       	computerScore++
       } else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
-       	return "You lose! ROCK beats PAPER."
+       	return "You lose! ROCK beats PAPER.";
+       	computerScore++
       } else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-       	return "You win! PAPER beats ROCK."
+       	return "You win! PAPER beats ROCK.";
+       	playerScore++;
       } else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-       	return "You win! ROCK beats SCISSORS."
+       	return "You win! ROCK beats SCISSORS.";
+       	playerScore++;
       } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-       	return "You win! SCISSORS beats PAPER."
+       	return "You win! SCISSORS beats PAPER.";
+       	playerScore++;
       } else {
-       	return "Draw."
+       	return "Draw.";
       }
+    }
+
+    function playGame() {
+    	for (let i = 0; i < 5; i++) {
+    		console.log(playRound(playerSelection, computerSelection));
+    	}
+    	if (playerScore < computerScore) {
+    		return "You got smacked the fuck up, bitch.";
+    	} else if (playerScore > computerScore) {
+    		return "Very nice.";
+    	} else {
+    		return "Meh."
+    	}
     }
           
     </script>
